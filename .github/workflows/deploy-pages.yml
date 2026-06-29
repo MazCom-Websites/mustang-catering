@@ -92,6 +92,9 @@ jobs:
           AUTH0_SECRET: 0000000000000000000000000000000000000000000000000000000000000000
           APP_BASE_URL: https://${{ vars.SITE_DOMAIN }}${{ vars.PAGES_BASE_PATH }}
           PAGES_BASE_PATH: ${{ vars.PAGES_BASE_PATH }}
+          # Inlined into client bundles so ContentImage prepends the subpath to CMS
+          # image srcs (/images/*); without it images 404 on a github.io subpath deploy.
+          NEXT_PUBLIC_PAGES_BASE_PATH: ${{ vars.PAGES_BASE_PATH }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
